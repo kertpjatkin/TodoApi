@@ -1,0 +1,29 @@
+options:
+  docker: true
+definitions:
+  services:
+    docker:
+      memory: 2048
+pipelines:
+  branches:
+    master:
+      - step:
+          image:
+            name: kertpjatkin92/aws-eb:master
+          deployment: production
+          script:
+            - aws s3 cp s3://medaid-configurations/$BITBUCKET_REPO_SLUG/$BITBUCKET_BRANCH/application.properties src/main/resources/application.properties
+            - aws s3 cp s3://medaid-configurations/$BITBUCKET_REPO_SLUG/$BITBUCKET_BRANCH/gradle.properties gradle.properties
+            - cat src/main/resources/application.properties
+            - eb use md-api-production
+            - eb deploy
+    test:
+      - step:
+          image:
+            name: kertpjatkin92/aws-eb:master
+          deployment: test
+          script:
+            - aws s3 cp s3://medaid-configurations/$BITBUCKET_REPO_SLUG/$BITBUCKET_BRANCH/application.properties src/main/resources/application.properties
+            - aws s3 cp s3://medaid-configurations/$BITBUCKET_REPO_SLUG/$BITBUCKET_BRANCH/gradle.properties gradle.properties
+            - eb use md-api-test
+            - eb deploy

@@ -1,0 +1,19 @@
+branch-defaults:
+  test:
+    environment: md-api-production
+environment-defaults:
+  md-api-test:
+    branch: null
+    repository: null
+global:
+  application_name: md-api
+  default_ec2_keyname: null
+  default_platform: arn:aws:elasticbeanstalk:eu-central-1::platform/Docker running
+    on 64bit Amazon Linux/2.13.0
+  default_region: eu-central-1
+  include_git_submodules: true
+  instance_profile: null
+  platform_name: null
+  platform_version: null
+  sc: git
+  workspace_type: Application

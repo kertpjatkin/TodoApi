@@ -1,0 +1,71 @@
+import com.amazonaws.auth.AWSStaticCredentialsProvider;
+import com.amazonaws.auth.BasicAWSCredentials;
+
+buildscript {
+    repositories {
+        mavenLocal()
+        jcenter()
+    }
+    dependencies {
+        classpath group: 'com.amazonaws', name: 'aws-java-sdk-core', version: '1.11.610'
+    }
+}
+
+plugins {
+    id 'org.springframework.boot' version '2.2.2.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+    id 'java'
+    id 'pmd'
+}
+
+ext {
+    awsCredentials = new AWSStaticCredentialsProvider(new BasicAWSCredentials(awsSecretKey, awsSecretAccessKey)).credentials;
+}
+
+group = 'in.pjatk'
+version = '0.0.1-SNAPSHOT'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+    maven {
+        url "s3://medaid-maven-repo/releases"
+        credentials(AwsCredentials) {
+            accessKey awsCredentials.AWSAccessKeyId
+            secretKey awsCredentials.AWSSecretKey
+        }
+    }
+}
+
+dependencies {
+    compile group: 'javax.validation', name: 'validation-api', version: '2.0.1.Final'
+    implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    compile group: 'com.amazonaws', name: 'aws-java-sdk-sqs', version: '1.11.646'
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.9'
+    compile group: 'org.modelmapper', name: 'modelmapper', version: '0.7.5'
+    compile 'io.medaid.errorhandler:ErrorHandler:0.0.3'
+    compile group: 'org.jsoup', name: 'jsoup', version: '1.12.1'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+pmd {
+    ruleSets = [
+        'java-basic',
+        'java-unnecessary',
+        'java-unusedcode'
+    ]
+}
