@@ -22,4 +22,4 @@ The same error handler is able to propagate the exception with stack trace to Se
 * Unit tests
 * Integration tests
 * Make static checks pass
-* Add API endpoints for making a Todo Task 
+* Add API endpoints for marking a task as done 
