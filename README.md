@@ -17,9 +17,3 @@ There's no other way these packages are allowed to depend on each other.
 ### Error Handling
 If uncaught errors propagate to the controller, then the controller has a error handler (`in.pjatk.todoapi.application.controllers.helpers`) which logs down the error.
 The same error handler is able to propagate the exception with stack trace to Sentry. In order to enable it, sepcify `sentry.dsn` in `application.properties`
-
-#### TODO
-* Unit tests
-* Integration tests
-* Make static checks pass
-* Add API endpoints for marking a task as done 
