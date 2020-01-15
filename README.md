@@ -1,4 +1,4 @@
-# Architecture
+### Architecture
 The application is based on [Hexagonal Architecture](https://blog.ndepend.com/hexagonal-architecture)
 
 #### `in.pjatkin.todoapi.domain`
@@ -13,6 +13,10 @@ For example, the package hooks up Spring Boot controllers to the use cases and A
 
 The key point of the architecture is to make sure that the flow of control is from outside in. Hence, `in.pjatkin.todoapi.application` depends on `in.pjatkin.todoapi.useCases`, which, in turn, depends on `in.pjatkin.todoapi.domain`.
 There's no other way these packages are allowed to depend on each other.
+
+### Error Handling
+If uncaught errors propagate to the controller, then the controller has a error handler (`in.pjatk.todoapi.application.controllers.helpers`) which logs down the error.
+The same error handler is able to propagate the exception with stack trace to Sentry. In order to enable it, sepcify `sentry.dsn` in `application.properties`
 
 #### TODO
 * Unit tests
