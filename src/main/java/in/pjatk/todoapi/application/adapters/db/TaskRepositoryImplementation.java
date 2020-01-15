@@ -3,19 +3,19 @@ package in.pjatk.todoapi.application.adapters.db;
 import static lombok.Lombok.checkNotNull;
 
 import in.pjatk.todoapi.application.adapters.db.mongo.MongoTodoRepository;
-import in.pjatk.todoapi.domain.entities.Todo;
-import in.pjatk.todoapi.useCases.ports.repositories.TodoRepository;
+import in.pjatk.todoapi.domain.entities.Task;
+import in.pjatk.todoapi.useCases.ports.repositories.TaskRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-class TodoRepositoryImplementation implements TodoRepository {
+class TaskRepositoryImplementation implements TaskRepository {
 
     private final MongoTodoRepository repository;
 
     @Override
-    public Todo save(Todo todo) {
+    public Task save(Task todo) {
         checkNotNull(todo, "todo cannot be null");
 
         return repository.save(todo);

@@ -7,7 +7,7 @@ import lombok.Setter;
 import org.springframework.data.annotation.Id;
 
 @Getter
-public class Todo {
+public class Task {
 
     @Id
     private String id;
@@ -18,7 +18,7 @@ public class Todo {
     private Instant completedAt;
 
     @Builder
-    private Todo(String description) {
+    private Task(String description) {
         this.description = description;
     }
 }

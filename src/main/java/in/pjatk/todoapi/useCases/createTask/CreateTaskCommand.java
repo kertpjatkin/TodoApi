@@ -1,12 +1,12 @@
-package in.pjatk.todoapi.useCases.createTodo;
+package in.pjatk.todoapi.useCases.createTask;
 
+import javax.validation.constraints.NotEmpty;
 import lombok.Builder;
 import lombok.Getter;
-import javax.validation.constraints.NotEmpty;
 
 @Getter
 @Builder
-public class CreateTodoCommand {
+public class CreateTaskCommand {
 
     @NotEmpty(message = "description cannot be empty")
     private final String description;

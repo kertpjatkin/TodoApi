@@ -25,11 +25,11 @@ class SqsNotifier implements Notifier {
     }
 
     @Override
-    public void notify(@NotEmpty String todoId) {
+    public void notify(@NotEmpty String taskId) {
         executor.submit(() -> {
             SendMessageRequest sendMessageRequest = new SendMessageRequest()
                 .withQueueUrl(sqsUrl)
-                .withMessageBody(todoId);
+                .withMessageBody(taskId);
 
             SendMessageResult result = sqs.sendMessage(sendMessageRequest);
 

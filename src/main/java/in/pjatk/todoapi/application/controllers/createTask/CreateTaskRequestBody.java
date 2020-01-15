@@ -1,4 +1,4 @@
-package in.pjatk.todoapi.application.controllers.createTodo;
+package in.pjatk.todoapi.application.controllers.createTask;
 
 import in.pjatk.todoapi.application.controllers.helpers.validators.NoHtml;
 import javax.validation.constraints.NotEmpty;
@@ -7,7 +7,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-class CreateTodoRequestBody {
+class CreateTaskRequestBody {
 
     @NotEmpty(message = "description cannot be empty")
     @NoHtml(message = "description cannot contain HTML tags")

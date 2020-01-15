@@ -1,11 +1,11 @@
-package in.pjatk.todoapi.application.controllers.createTodo;
+package in.pjatk.todoapi.application.controllers.createTask;
 
 import static in.pjatk.todoapi.application.controllers.helpers.ResponseUtil.buildBadResponse;
 import static in.pjatk.todoapi.application.controllers.helpers.ResponseUtil.buildOkResponse;
 import static in.pjatk.todoapi.application.controllers.helpers.ResponseUtil.mapValidationErrors;
 
-import in.pjatk.todoapi.useCases.createTodo.CreateTodoCommand;
-import in.pjatk.todoapi.useCases.createTodo.CreateTodoUseCase;
+import in.pjatk.todoapi.useCases.createTask.CreateTaskCommand;
+import in.pjatk.todoapi.useCases.createTask.CreateTaskUseCase;
 import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -17,22 +17,22 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
-public class CreateTodoController {
+public class CreateTaskController {
 
-    private final CreateTodoUseCase useCase;
+    private final CreateTaskUseCase useCase;
     private final ModelMapper modelMapper;
 
-    @PostMapping("/todos")
+    @PostMapping("/tasks")
     public ResponseEntity post(
-        @Valid @RequestBody CreateTodoRequestBody requestBody, BindingResult result) {
+        @Valid @RequestBody CreateTaskRequestBody requestBody, BindingResult result) {
         if (result.hasErrors()) {
             return buildBadResponse(mapValidationErrors(result.getAllErrors()));
         }
 
         var createTodoResponse = useCase
-            .execute(CreateTodoCommand.builder().description(requestBody.getDescription()).build());
+            .execute(CreateTaskCommand.builder().description(requestBody.getDescription()).build());
 
         return buildOkResponse(
-            CreateTodoResponse.toResponse(modelMapper, createTodoResponse.getTodo()));
+            CreateTaskResponse.toResponse(modelMapper, createTodoResponse.getTodo()));
     }
 }
