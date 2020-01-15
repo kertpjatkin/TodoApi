@@ -33,7 +33,7 @@ class CreateTask implements CreateTaskUseCase {
         log.debug("Creating task with description {}", command.getDescription());
         var task = Task.builder().description(command.getDescription()).build();
 
-        repository.save(task);
+        task = repository.save(task);
         log.info("Created task {}", task.getId());
         notifier.notify(task.getId());
 

@@ -43,23 +43,23 @@ repositories {
 }
 
 dependencies {
-    compile group: 'javax.validation', name: 'validation-api', version: '2.0.1.Final'
+    implementation group: 'javax.validation', name: 'validation-api', version: '2.0.1.Final'
     implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    compile group: 'com.amazonaws', name: 'aws-java-sdk-sqs', version: '1.11.646'
+    implementation group: 'com.amazonaws', name: 'aws-java-sdk-sqs', version: '1.11.646'
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
-    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.9'
-    compile group: 'org.modelmapper', name: 'modelmapper', version: '0.7.5'
-    compile 'io.medaid.errorhandler:ErrorHandler:0.0.3'
-    compile group: 'org.jsoup', name: 'jsoup', version: '1.12.1'
-    compile group: 'org.apache.commons', name: 'commons-collections4', version: '4.4'
+    implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.9'
+    implementation group: 'org.modelmapper', name: 'modelmapper', version: '0.7.5'
+    implementation 'io.medaid.errorhandler:ErrorHandler:0.0.3'
+    implementation group: 'org.jsoup', name: 'jsoup', version: '1.12.1'
+    implementation group: 'org.apache.commons', name: 'commons-collections4', version: '4.4'
 
-    testCompile group: 'org.mockito', name: 'mockito-junit-jupiter', version: '2.28.2'
-    testCompile group: 'org.mockito', name: 'mockito-core', version: '2.28.2'
+    testImplementation group: 'org.mockito', name: 'mockito-junit-jupiter', version: '2.28.2'
+    testImplementation group: 'org.mockito', name: 'mockito-core', version: '2.28.2'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.3.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.3.1'
 }
