@@ -5,6 +5,10 @@ import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.sqs.AmazonSQS;
 import com.amazonaws.services.sqs.AmazonSQSClientBuilder;
+import in.pjatk.todoapi.application.adapters.sqs.AwsSqsQueue;
+import in.pjatk.todoapi.application.adapters.sqs.RetryAwareSqsQueue;
+import in.pjatk.todoapi.application.adapters.sqs.SqsQueue;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -28,5 +32,18 @@ public class AdaptersConfiguration {
             .withCredentials(new AWSStaticCredentialsProvider(awsCredentials))
             .withRegion(Regions.EU_CENTRAL_1)
             .build();
+    }
+
+    @Bean
+    @Qualifier("sqsQueueWithoutRetry")
+    public AwsSqsQueue getSqsQueueWithoutRetry(AmazonSQS sqs) {
+        return new AwsSqsQueue(sqs);
+    }
+
+    @Bean
+    @Qualifier("retryAwareSqsQueue")
+    public SqsQueue getSqsQueue(@Qualifier("sqsQueueWithoutRetry") AwsSqsQueue sqsQueue,
+        @Value("${sqs.number_of_retries}") int maxNumberOfRetries) {
+        return new RetryAwareSqsQueue(sqsQueue, maxNumberOfRetries);
     }
 }

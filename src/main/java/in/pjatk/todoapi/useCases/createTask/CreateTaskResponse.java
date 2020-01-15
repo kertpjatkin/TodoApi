@@ -8,6 +8,6 @@ import lombok.Getter;
 @Builder
 public class CreateTaskResponse {
 
-    private final Task todo;
+    private final Task task;
 
 }

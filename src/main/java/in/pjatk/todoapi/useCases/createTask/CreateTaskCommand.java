@@ -11,4 +11,10 @@ public class CreateTaskCommand {
     @NotEmpty(message = "description cannot be empty")
     private final String description;
 
+    @Override
+    public String toString() {
+        return "CreateTaskCommand{" +
+            "description='" + description + '\'' +
+            '}';
+    }
 }
