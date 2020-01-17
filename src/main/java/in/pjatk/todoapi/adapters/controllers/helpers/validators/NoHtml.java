@@ -15,8 +15,7 @@ import javax.validation.Payload;
 @Documented
 public @interface NoHtml {
 
-    // TODO use a better message, look up ValidationMEssages.properties
-    String message() default "{org.myproject.constraints.nohtml}";
+    String message() default "nohtml";
 
     Class<?>[] groups() default {};
 

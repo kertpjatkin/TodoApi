@@ -3,3 +3,4 @@ aws.access_key_id=
 aws.secret_access_key=
 sqs.queue_url=
 sentry.dsn=
+stacktrace.app.packages=in.pjatk.todoapi

@@ -1,7 +1,6 @@
 package in.pjatk.todoapi.adapters.controllers.helpers;
 
 import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
-import static org.springframework.http.HttpStatus.UNAUTHORIZED;
 
 import java.util.AbstractMap.SimpleEntry;
 import java.util.List;
@@ -16,10 +15,6 @@ public class ResponseUtil {
 
     public static <T> ResponseEntity<T> buildBadResponse(T body) {
         return ResponseEntity.badRequest().body(body);
-    }
-
-    public static <T> ResponseEntity<T> buildUnauthorized() {
-        return ResponseEntity.status(UNAUTHORIZED).build();
     }
 
     public static <T> ResponseEntity<T> buildBadResponse() {

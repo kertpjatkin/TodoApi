@@ -12,7 +12,7 @@ class CreateTaskResponse {
 
     private final TaskDTO task;
 
-    public static CreateTaskResponse toResponse(ModelMapper modelMapper, Task task) {
+    static CreateTaskResponse toResponse(ModelMapper modelMapper, Task task) {
         return CreateTaskResponse.builder().task(modelMapper.map(task, TaskDTO.class)).build();
     }
 }

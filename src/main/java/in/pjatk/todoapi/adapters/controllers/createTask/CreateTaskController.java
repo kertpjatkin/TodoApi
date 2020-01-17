@@ -26,19 +26,19 @@ public class CreateTaskController {
     private final ModelMapper modelMapper;
 
     @PostMapping("/tasks")
-    public ResponseEntity post(
+    public ResponseEntity createTask(
         @Valid @RequestBody CreateTaskRequestBody requestBody, BindingResult result) {
         if (result.hasErrors()) {
             return buildBadResponse(mapValidationErrors(result.getAllErrors()));
         }
 
         try {
-            var createTodoResponse = useCase
+            var createTaskResponse = useCase
                 .createTask(
                     CreateTaskCommand.builder().description(requestBody.getDescription()).build());
 
             return buildOkResponse(
-                CreateTaskResponse.toResponse(modelMapper, createTodoResponse.getTask()));
+                CreateTaskResponse.toResponse(modelMapper, createTaskResponse.getTask()));
         } catch (InvalidCommandException e) {
             log.warn("Unable to create task because command is invalid");
             return buildBadResponse();
