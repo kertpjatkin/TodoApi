@@ -20,7 +20,7 @@ For example, the package hooks up Spring Boot controllers to the use cases and A
 The key point of the architecture is to make sure that the flow of control is from outside in. Hence, `in.pjatkin.todoapi.adapters` depends on `in.pjatkin.todoapi.application`, which, in turn, depends on `in.pjatkin.todoapi.domain`.
 There's no other way these packages are allowed to depend on each other.
 
-![img](https://i.imgur.com/7Dv4G9k.png | width=100)
+![img](https://i.imgur.com/7Dv4G9k.png)
 
 ### Error Handling
 If uncaught errors propagate to the controller, then the controller has a error handler (`in.pjatk.todoapi.adapters.controllers.helpers`) which logs down the error.
