@@ -1,4 +1,4 @@
-package in.pjatk.todoapi.application.createTask;
+package in.pjatk.todoapi.application.createtask;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
@@ -18,11 +18,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.mockito.junit.jupiter.MockitoSettings;
-import org.mockito.quality.Strictness;
 
 @ExtendWith(MockitoExtension.class)
-@MockitoSettings(strictness = Strictness.LENIENT)
 class CreateTaskServiceTest {
 
     private static final String SAVED_TASK_ID = "savedTaskId";
@@ -44,12 +41,13 @@ class CreateTaskServiceTest {
         var validator = factory.getValidator();
         createTaskService = new CreateTaskService(taskRepository, notifier,
             validator);
-        when(taskRepository.save(any())).thenReturn(task);
-        when(task.getId()).thenReturn(SAVED_TASK_ID);
     }
 
     @Test
     void withCorrectCommand_createsTask() {
+        when(taskRepository.save(any())).thenReturn(task);
+        when(task.getId()).thenReturn(SAVED_TASK_ID);
+
         var description = "taskDescription";
         var command = CreateTaskCommand.builder().description(description).build();
         createTaskService.createTask(command);

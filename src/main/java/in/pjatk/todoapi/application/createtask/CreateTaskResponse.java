@@ -1,4 +1,4 @@
-package in.pjatk.todoapi.application.createTask;
+package in.pjatk.todoapi.application.createtask;
 
 import in.pjatk.todoapi.domain.Task;
 import lombok.Builder;

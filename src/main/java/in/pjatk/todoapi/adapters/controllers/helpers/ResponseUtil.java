@@ -7,10 +7,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
+import lombok.experimental.UtilityClass;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
 
+@UtilityClass
 public class ResponseUtil {
 
     public static <T> ResponseEntity<T> buildBadResponse(T body) {

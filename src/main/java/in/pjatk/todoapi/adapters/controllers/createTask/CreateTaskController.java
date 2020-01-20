@@ -4,8 +4,8 @@ import static in.pjatk.todoapi.adapters.controllers.helpers.ResponseUtil.buildBa
 import static in.pjatk.todoapi.adapters.controllers.helpers.ResponseUtil.buildOkResponse;
 import static in.pjatk.todoapi.adapters.controllers.helpers.ResponseUtil.mapValidationErrors;
 
-import in.pjatk.todoapi.application.createTask.CreateTaskCommand;
-import in.pjatk.todoapi.application.createTask.CreateTaskUseCase;
+import in.pjatk.todoapi.application.createtask.CreateTaskCommand;
+import in.pjatk.todoapi.application.createtask.CreateTaskUseCase;
 import in.pjatk.todoapi.application.exceptions.InvalidCommandException;
 import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;

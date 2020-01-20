@@ -1,4 +1,4 @@
-package in.pjatk.todoapi.application.createTask;
+package in.pjatk.todoapi.application.createtask;
 
 public interface CreateTaskUseCase {
 

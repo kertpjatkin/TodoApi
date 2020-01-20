@@ -1,4 +1,4 @@
-package in.pjatk.todoapi.application.createTask;
+package in.pjatk.todoapi.application.createtask;
 
 import static in.pjatk.todoapi.application.helpers.ValidatorErrorsMapper.mapValidationErrors;
 import static org.apache.commons.collections4.CollectionUtils.isEmpty;

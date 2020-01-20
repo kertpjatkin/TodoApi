@@ -1,4 +1,4 @@
-package in.pjatk.todoapi.application.createTask;
+package in.pjatk.todoapi.application.createtask;
 
 import javax.validation.constraints.NotEmpty;
 import lombok.Builder;
